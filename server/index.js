@@ -19,7 +19,7 @@ mongoose.connect("mongodb+srv://francesdonz23:password1234@auth.34tuwf2.mongodb.
 app.use(
   cors({
     origin: ["https://chat-apps-nine.vercel.app"], // Update with your frontend URL
-    methods: ["POST", "GET", "DELETE", "PUT"],
+    methods: ["POST, GET, DELETE, PUT"],
     credentials: true,
   })
 );
