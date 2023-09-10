@@ -15,7 +15,7 @@ const Register = () => {
   };
 
   const handleSubmit = () => {
-    Axios.post("api/Register", regInfo)
+    Axios.post("/api/Register", regInfo)
       .then(() => {
         console.log("Registration successful");
       })
