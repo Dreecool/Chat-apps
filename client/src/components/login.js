@@ -21,7 +21,7 @@ const Login = () => {
 
   const Submit = () => {
 
-    Axios.post("https://chat-apps-nine.vercel.app/loginUser", loginInfo).then((response) => {
+    Axios.post("https://chat-apps-nine.vercel.app/LoginUser", loginInfo).then((response) => {
 
     if(response.data.message === "Login successful") {
       Navigate("/welcome")
