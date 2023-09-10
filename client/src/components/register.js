@@ -16,7 +16,7 @@ const Register = () => {
 
   const SubmitData = () => {
 
-    Axios.post("http://localhost:3001/reg", regInfo).then(() => {
+    Axios.post("https://chat-apps-8ap0kismu-dreecool.vercel.app/reg", regInfo).then(() => {
 
     console.log("success")
 
