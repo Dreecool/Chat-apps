@@ -16,13 +16,7 @@ mongoose.connect("mongodb+srv://francesdonz23:password1234@auth.34tuwf2.mongodb.
 
 })
 
-app.use(cors(
-  {
-    origin: ["https://chat-apps-nine.vercel.app"],
-    methods: ["POST", "GET", "DELETE", "PUT"],
-    credentials: true
-  }
-));
+app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
