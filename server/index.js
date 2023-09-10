@@ -10,7 +10,7 @@ const PORT = 3001;
 
 const Register = require("./model/register")
 
-mongoose.connect("mongodb+srv://francesdonz23:password1234@auth.34tuwf2.mongodb.net/register?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://francesdonz23:password1234@auth.34tuwf2.mongodb.net/", {
 
   useNewUrlParser: true,
 
