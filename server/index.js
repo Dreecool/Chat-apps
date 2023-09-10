@@ -18,7 +18,7 @@ mongoose.connect("mongodb+srv://francesdonz23:password1234@auth.34tuwf2.mongodb.
 
 app.use(cors(
   {
-    origin: ["http://localhost:3000"],
+    origin: ["https://chat-apps-yr71-qykivup0q-dreecool.vercel.app"],
     methods: ["POST", "GET", "DELETE", "PUT"],
     credentials: true
   }
