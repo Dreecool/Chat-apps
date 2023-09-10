@@ -21,7 +21,7 @@ const Login = () => {
 
   const Submit = () => {
 
-    Axios.post("https://chat-apps-8ap0kismu-dreecool.vercel.app/loginUser", loginInfo).then((response) => {
+    Axios.post("https://chat-apps-nine.vercel.app/loginUser", loginInfo).then((response) => {
 
     if(response.data.message === "Login successful") {
       Navigate("/welcome")
@@ -34,7 +34,7 @@ const Login = () => {
 
   useEffect(() => {
 
-    Axios.get("https://chat-apps-8ap0kismu-dreecool.vercel.app/LoggedIn").then((response) => {
+    Axios.get("https://chat-apps-nine.vercel.app/LoggedIn").then((response) => {
 
     if(response.data.Message === "Authorized") {
       setIsAuthorized(true)
