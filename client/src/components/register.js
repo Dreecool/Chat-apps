@@ -15,7 +15,7 @@ const Register = () => {
   };
 
   const handleSubmit = () => {
-    Axios.post("https://chat-apps-rl4l33un6-dreecool.vercel.app/api/Register", regInfo)
+    Axios.post("api/Register", regInfo)
       .then(() => {
         console.log("Registration successful");
       })
