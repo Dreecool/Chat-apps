@@ -5,55 +5,58 @@ import Axios from 'axios'
 
 const Login = () => {
 
-  const [name, setName] = useState("");
-  const [emailAdd, setEmailAdd] = useState("");
+  const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const navigate = useNavigate();
 
-  const regInfo = {
-    full_name: name,
-    email_address: emailAdd,
+  const loginInfo = {
+    email_address: email,
     password: pass,
   };
 
   const handleSubmit = () => {
-    Axios.post("/api/Register", regInfo)
-      .then(() => {
-        console.log("Registration successful");
+    Axios.post("/api/LoginUser", loginInfo)
+      .then((response) => {
+        if (response.data.message === "Login successful") {
+          navigate("/welcome");
+        }
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
+  useEffect(() => {
+    Axios.get("/api/LoggedIn")
+      .then((response) => {
+        if (response.data.Message === "Authorized") {
+          setIsAuthorized(true);
+        } else {
+          setIsAuthorized(false);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  if (isAuthorized) {
+    navigate("/welcome");
+    return null;
+  }
+
   return (
     <>
-      <p>Register</p>
+      <p>Login</p>
       <div className="form-div">
-        <input
-          placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          placeholder="Email Address"
-          value={emailAdd}
-          onChange={(e) => setEmailAdd(e.target.value)}
-        />
-        <input
-          placeholder="Password"
-          value={pass}
-          onChange={(e) => setPass(e.target.value)}
-        />
-        <button onClick={handleSubmit}>Register</button>
+        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input value={pass} onChange={(e) => setPass(e.target.value)} />
+        <button onClick={handleSubmit}>Login</button>
       </div>
-      <Link to="/">Login</Link>
-
-
+      <Link to="/reg">Signup</Link>
     </>
-
-
-
-  )
+  );
 }
 
 export default Login
