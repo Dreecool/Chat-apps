@@ -4,48 +4,50 @@ import { useState } from "react"
 
 const Register = () => {
 
-  const [name, setName] = useState();
-  const [emailAdd, setEmailAdd] = useState();
-  const [pass, setPass] = useState();
+  const [name, setName] = useState("");
+  const [emailAdd, setEmailAdd] = useState("");
+  const [pass, setPass] = useState("");
 
   const regInfo = {
     full_name: name,
     email_address: emailAdd,
-    password: pass
-  }
+    password: pass,
+  };
 
-  const SubmitData = () => {
-
-    Axios.post("https://chat-apps-nine.vercel.app/Register", regInfo).then(() => {
-
-    console.log("success")
-
-    })
-    
-  }
-
-
+  const handleSubmit = () => {
+    Axios.post("/api/Register", regInfo)
+      .then(() => {
+        console.log("Registration successful");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
-
     <>
-    
-    <p>Register</p>
-
+      <p>Register</p>
       <div className="form-div">
-
-        <input placeholder="Full Name" value={name} onChange={(e) => {setName(e.target.value)}}/>
-        <input placeholder="Email Address" value={emailAdd} onChange={(e) => {setEmailAdd(e.target.value)}}/>
-        <input placeholder="Password" value={pass} onChange={(e) => {setPass(e.target.value)}}/>
-        <button onClick={SubmitData}>Register</button>
-
+        <input
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          placeholder="Email Address"
+          value={emailAdd}
+          onChange={(e) => setEmailAdd(e.target.value)}
+        />
+        <input
+          placeholder="Password"
+          value={pass}
+          onChange={(e) => setPass(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Register</button>
       </div>
-
-      <Link to='/'>Login</Link>
-
+      <Link to="/">Login</Link>
     </>
-
-  )
+  );
 }
 
 export default Register
