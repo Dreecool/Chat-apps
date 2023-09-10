@@ -13,7 +13,7 @@ const PrivateRoutes = () => {
 
   useEffect(() => {
 
-    Axios.get("https://chat-apps-8ap0kismu-dreecool.vercel.app/LoggedIn").then((response) => {
+    Axios.get("https://chat-apps-nine.vercel.app/LoggedIn").then((response) => {
 
     console.log(response)
       
