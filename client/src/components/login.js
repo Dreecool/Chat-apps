@@ -5,71 +5,48 @@ import Axios from 'axios'
 
 const Login = () => {
 
-  Axios.defaults.withCredentials = true
+  const [name, setName] = useState("");
+  const [emailAdd, setEmailAdd] = useState("");
+  const [pass, setPass] = useState("");
 
-  const [email, setEmail] = useState();
-  const [pass, setPass] = useState();
-  const [isAuthorized, setIsAuthorized] = useState()
-  const Navigate = useNavigate()
+  const regInfo = {
+    full_name: name,
+    email_address: emailAdd,
+    password: pass,
+  };
 
-  const loginInfo = {
+  const handleSubmit = () => {
+    Axios.post("/api/Register", regInfo)
+      .then(() => {
+        console.log("Registration successful");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
-    email_address: email,
-    password: pass
-
-  }
-
-  const Submit = () => {
-
-    Axios.post("https://chat-apps-nine.vercel.app/LoginUser", loginInfo).then((response) => {
-
-    if(response.data.message === "Login successful") {
-      Navigate("/welcome")
-    }
-
-
-    })
-
-  }
-
-  useEffect(() => {
-
-    Axios.get("https://chat-apps-nine.vercel.app/LoggedIn").then((response) => {
-
-    if(response.data.Message === "Authorized") {
-      setIsAuthorized(true)
-    } else {
-      setIsAuthorized(false)
-    }
-
-    })
-
-  }, [])
-
-
-  if (isAuthorized) {
-    Navigate("/welcome"); 
-    return null; 
-  }
-
-
-  
   return (
-
-
     <>
-
-
-      <p>Login</p>
-
+      <p>Register</p>
       <div className="form-div">
-        <input value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-        <input value={pass} onChange={(e) => {setPass(e.target.value)}}/>
-        <button onClick={Submit}>Login</button>
+        <input
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          placeholder="Email Address"
+          value={emailAdd}
+          onChange={(e) => setEmailAdd(e.target.value)}
+        />
+        <input
+          placeholder="Password"
+          value={pass}
+          onChange={(e) => setPass(e.target.value)}
+        />
+        <button onClick={handleSubmit}>Register</button>
       </div>
-
-      <Link to='/reg'>Signup</Link>
-      
+      <Link to="/">Login</Link>
 
 
     </>
