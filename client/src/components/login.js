@@ -16,7 +16,7 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    Axios.post("/api/LoginUser", loginInfo)
+    Axios.post("https://chat-apps-q4sh47o1k-dreecool.vercel.app/api/LoginUser", loginInfo)
       .then((response) => {
         if (response.data.message === "Login successful") {
           navigate("/welcome");
@@ -28,7 +28,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    Axios.get("/api/LoggedIn")
+    Axios.get("https://chat-apps-q4sh47o1k-dreecool.vercel.app/api/LoggedIn")
       .then((response) => {
         if (response.data.Message === "Authorized") {
           setIsAuthorized(true);
